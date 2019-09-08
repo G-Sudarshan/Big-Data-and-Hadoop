@@ -1,0 +1,41 @@
+Step By Step Explanation fro installing Java on Ubuntu
+
+Step 1:- 
+Download JDK 8 tar.gz file from official website
+
+Step 2:-
+Extract contents using tar command
+
+$tar -xzvf filename.tar.gz
+
+Step 3 :-
+Move Extracted file to /usr/local/java Directory
+
+Step 4: -
+Update Alternatives
+
+$sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_60/bin/java" 1
+
+$sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.8.0_60/bin/javac" 1
+
+$sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.8.0_60/bin/javaws" 1
+
+Step 5 :-
+Update bashrc file
+
+$sudo gedit ~/.bashrc
+
+Step 6 :-
+
+Apply code
+
+$Source ~/.bashrc
+
+Step 7 :-
+Check Java version
+
+$java -version
+
+
+Link to English Video :-
+https://www.youtube.com/watch?v=muj6O...
