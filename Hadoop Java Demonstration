@@ -1,0 +1,12 @@
+
+for running wordcount jar file
+
+hadoop jar /home/g-sudarshan/Desktop/WordCount.jar WordCountdemo /Demo/wordcount_data.txt /mroutput3
+
+for retriving result
+
+hdfs dfs -cat /mroutput4/part-00000
+
+
+
+

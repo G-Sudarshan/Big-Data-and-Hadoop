@@ -1,0 +1,12 @@
+
+1) Top 10 perfoeming countries
+
+hdfs dfs -cat /olympic_project/result/part-r-00000
+
+2) Total medals of india sportwise
+
+hdfs dfs -cat /olympic_project/india_medals/part-r-00000
+
+3) Top 10 performing countries in swimming
+
+hdfs dfs -cat /olympic_project/swimming_medals/part-r-00000
