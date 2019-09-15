@@ -1,12 +1,72 @@
 
 1) Top 10 perfoeming countries
 
+olympic = load '/athletes.csv' using PigStorage(',');
+
+Country_final = foreach olympic generate $2 as Country, $11 as total_medals;
+
+grouped = group Country_final by Country;
+
+final_result = foreach grouped generate group, COUNT(Country_final.total_medals)as f_count;
+
+sort = order final_result by f_count desc;
+
+final_count = limit sort 10;
+
+dump final_count;
+
+store final_count into '/olympic_project/result/';
+
+
 hdfs dfs -cat /olympic_project/result/part-r-00000
+
+
 
 2) Total medals of india sportwise
 
+olympic = load '/athletes.csv' using PigStorage(',');
+
+Country_final = foreach olympic generate $2 as Country, $7 as sport, $11 as total_medals;
+
+Filtered = filter Country_final by Country == 'IND';
+
+final_group = GROUP Filtered by sport;
+
+final_count = foreach final_group generate group, COUNT(Filtered);
+
+dump final_count;
+
+store final_count into '/olympic_project/india_medals';
+
+
+
 hdfs dfs -cat /olympic_project/india_medals/part-r-00000
 
+
+
+
 3) Top 10 performing countries in swimming
+
+olympic = load '/athletes.csv' using PigStorage(',');
+
+Country_final = foreach olympic generate $2 as Country ,$7 as sport , $11 as total_medals;
+
+athletes_filter = FILTER Country_final by sport == 'aquatics';
+
+final_group = GROUP athletes_filter by Country;
+
+final_count = foreach final_group generate group, COUNT(athletes_filter) as f_count;
+
+sort = order final_count by f_count desc;
+
+dump sort;
+
+final_count = limit sort 10;
+
+dump final_count;
+
+store final_count into '/olympic_project/swimming_medals';
+
+
 
 hdfs dfs -cat /olympic_project/swimming_medals/part-r-00000
